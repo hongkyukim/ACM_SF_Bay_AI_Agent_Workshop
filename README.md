@@ -49,3 +49,30 @@ If needed, you can expose the port to the public, allowing others to access your
 
 # Contribution
 We welcome contributions! Feel free to submit a Pull Request (PR) from your forked repository.
+
+## Slack Loop (Codex-style) Setup
+
+If you want to run the workshop agent from Slack using an event loop, you can wire it up with Slack Socket Mode.
+
+1. Create a Slack app at https://api.slack.com/apps.
+2. Enable **Socket Mode** and copy your app-level token (`xapp-...`).
+3. Add bot token scopes: `app_mentions:read`, `channels:history`, and `chat:write`.
+4. Install the app to your workspace and copy the bot token (`xoxb-...`).
+5. Add the following keys to your `.env` file:
+
+```bash
+SLACK_BOT_TOKEN=xoxb-...
+SLACK_APP_TOKEN=xapp-...
+SLACK_DEFAULT_HOST=xai
+XAI_API_KEY=...
+# or GROQ_API_KEY=... if you set SLACK_DEFAULT_HOST=groq
+```
+
+Run the Slack loop:
+
+```bash
+source venv/bin/activate
+python slack_codex_loop.py
+```
+
+Then mention the bot in Slack, for example: `@your-bot summarize today's AI news`.
