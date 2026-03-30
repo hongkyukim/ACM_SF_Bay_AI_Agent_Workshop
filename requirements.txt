@@ -3,3 +3,5 @@ python-dotenv
 duckduckgo_search
 litellm
 streamlit
+slack-bolt>=1.21.0
+slack-sdk>=3.35.0
